@@ -40,7 +40,7 @@
 			btnAnalyse = new Button();
 			btnGroup = new Button();
 			txtGroupFolder = new TextBox();
-			checkedListBox1 = new CheckedListBox();
+			chkExtentionList = new CheckedListBox();
 			lblFileTypes = new Label();
 			lblSourceFolder = new Label();
 			txtSourceFolder = new TextBox();
@@ -72,7 +72,7 @@
 			tabFileMover.Controls.Add(btnAnalyse);
 			tabFileMover.Controls.Add(btnGroup);
 			tabFileMover.Controls.Add(txtGroupFolder);
-			tabFileMover.Controls.Add(checkedListBox1);
+			tabFileMover.Controls.Add(chkExtentionList);
 			tabFileMover.Controls.Add(lblFileTypes);
 			tabFileMover.Controls.Add(lblSourceFolder);
 			tabFileMover.Controls.Add(txtSourceFolder);
@@ -151,6 +151,7 @@
 			btnAnalyse.TabIndex = 6;
 			btnAnalyse.Text = "Analyze";
 			btnAnalyse.UseVisualStyleBackColor = true;
+			btnAnalyse.Click += btnAnalyse_Click;
 			// 
 			// btnGroup
 			// 
@@ -168,13 +169,13 @@
 			txtGroupFolder.Size = new Size(100, 23);
 			txtGroupFolder.TabIndex = 4;
 			// 
-			// checkedListBox1
+			// chkExtentionList
 			// 
-			checkedListBox1.FormattingEnabled = true;
-			checkedListBox1.Location = new Point(23, 104);
-			checkedListBox1.Name = "checkedListBox1";
-			checkedListBox1.Size = new Size(120, 238);
-			checkedListBox1.TabIndex = 3;
+			chkExtentionList.FormattingEnabled = true;
+			chkExtentionList.Location = new Point(23, 104);
+			chkExtentionList.Name = "chkExtentionList";
+			chkExtentionList.Size = new Size(120, 238);
+			chkExtentionList.TabIndex = 3;
 			// 
 			// lblFileTypes
 			// 
@@ -236,7 +237,7 @@
 		private Button btnAnalyse;
 		private Button btnGroup;
 		private TextBox txtGroupFolder;
-		private CheckedListBox checkedListBox1;
+		private CheckedListBox chkExtentionList;
 		private Label lblFileTypes;
 		private Label lblSourceFolder;
 		private TextBox txtSourceFolder;
