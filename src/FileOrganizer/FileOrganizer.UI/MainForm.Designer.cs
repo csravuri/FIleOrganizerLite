@@ -30,6 +30,7 @@
 		{
 			tabControl1 = new TabControl();
 			tabFileMover = new TabPage();
+			lstGroupedList = new ListBox();
 			btnCopy = new Button();
 			btnMove = new Button();
 			txtDestinationFolder = new TextBox();
@@ -44,7 +45,6 @@
 			lblSourceFolder = new Label();
 			txtSourceFolder = new TextBox();
 			tabDeleter = new TabPage();
-			lstGroupedList = new ListBox();
 			tabControl1.SuspendLayout();
 			tabFileMover.SuspendLayout();
 			SuspendLayout();
@@ -84,6 +84,15 @@
 			tabFileMover.Text = "File Mover";
 			tabFileMover.UseVisualStyleBackColor = true;
 			// 
+			// lstGroupedList
+			// 
+			lstGroupedList.FormattingEnabled = true;
+			lstGroupedList.ItemHeight = 15;
+			lstGroupedList.Location = new Point(302, 104);
+			lstGroupedList.Name = "lstGroupedList";
+			lstGroupedList.Size = new Size(200, 244);
+			lstGroupedList.TabIndex = 14;
+			// 
 			// btnCopy
 			// 
 			btnCopy.Location = new Point(445, 375);
@@ -92,6 +101,7 @@
 			btnCopy.TabIndex = 13;
 			btnCopy.Text = "Copy";
 			btnCopy.UseVisualStyleBackColor = true;
+			btnCopy.Click += btnCopy_Click;
 			// 
 			// btnMove
 			// 
@@ -101,6 +111,7 @@
 			btnMove.TabIndex = 12;
 			btnMove.Text = "Move";
 			btnMove.UseVisualStyleBackColor = true;
+			btnMove.Click += btnMove_Click;
 			// 
 			// txtDestinationFolder
 			// 
@@ -206,15 +217,6 @@
 			tabDeleter.TabIndex = 1;
 			tabDeleter.Text = "File Deleter";
 			tabDeleter.UseVisualStyleBackColor = true;
-			// 
-			// lstGroupedList
-			// 
-			lstGroupedList.FormattingEnabled = true;
-			lstGroupedList.ItemHeight = 15;
-			lstGroupedList.Location = new Point(302, 104);
-			lstGroupedList.Name = "lstGroupedList";
-			lstGroupedList.Size = new Size(200, 244);
-			lstGroupedList.TabIndex = 14;
 			// 
 			// MainForm
 			// 
