@@ -108,6 +108,12 @@ namespace FileOrganizer.UI
 				return;
 			}
 
+			if (destinationFolder == txtSourceFolder.Text)
+			{
+				ShowMessage("Source and Destination cannot be same");
+				return;
+			}
+
 			if (!Directory.Exists(destinationFolder))
 			{
 				Directory.CreateDirectory(destinationFolder);
@@ -125,6 +131,8 @@ namespace FileOrganizer.UI
 					throw;
 				}
 			}
+
+			lstGroupedList.Items.Clear();
 		}
 
 		private void TransferFiles(bool move, GroupFileList item, FileInfo[] fileInfos, string destinationFolder)
