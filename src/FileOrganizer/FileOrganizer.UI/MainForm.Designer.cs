@@ -171,6 +171,7 @@
 			// 
 			// chkExtentionList
 			// 
+			chkExtentionList.CheckOnClick = true;
 			chkExtentionList.FormattingEnabled = true;
 			chkExtentionList.Location = new Point(23, 104);
 			chkExtentionList.Name = "chkExtentionList";
