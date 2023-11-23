@@ -2,7 +2,7 @@ namespace FileOrganizer.UI
 {
 	public partial class MainForm : Form
 	{
-		private FileAnalyzer fileAnalyzer;
+
 
 		public MainForm()
 		{
@@ -11,15 +11,12 @@ namespace FileOrganizer.UI
 
 		private void btnAnalyse_Click(object sender, EventArgs e)
 		{
-			var sourceFilePath = txtSourceFolder.Text;
-			if (!Directory.Exists(sourceFilePath))
+			if (Analyzer is null)
 			{
-				MessageBox.Show("Source folder not exists");
 				return;
 			}
 
-			fileAnalyzer = new FileAnalyzer(sourceFilePath);
-			var fileInfos = fileAnalyzer.GetFileDetails();
+			var fileInfos = Analyzer.GetFileDetails();
 			FillExtenstionsList(fileInfos);
 		}
 
@@ -32,5 +29,22 @@ namespace FileOrganizer.UI
 				chkExtentionList.Items.Add(extention);
 			}
 		}
+
+		FileAnalyzer Analyzer => fileAnalyzer ?? GetAnalyzer();
+
+		private FileAnalyzer GetAnalyzer()
+		{
+			var sourceFilePath = txtSourceFolder.Text;
+			if (!Directory.Exists(sourceFilePath))
+			{
+				MessageBox.Show("Source folder not exists");
+				return null;
+			}
+
+			return new FileAnalyzer(sourceFilePath);
+		}
+
+		private readonly FileAnalyzer fileAnalyzer;
+
 	}
 }
