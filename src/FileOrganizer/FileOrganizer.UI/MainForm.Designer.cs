@@ -35,7 +35,6 @@
 			txtDestinationFolder = new TextBox();
 			lblDestination = new Label();
 			lblGroupFolder = new Label();
-			flowLayoutPanel1 = new FlowLayoutPanel();
 			lblGroups = new Label();
 			btnAnalyse = new Button();
 			btnGroup = new Button();
@@ -45,6 +44,7 @@
 			lblSourceFolder = new Label();
 			txtSourceFolder = new TextBox();
 			tabDeleter = new TabPage();
+			lstGroupedList = new ListBox();
 			tabControl1.SuspendLayout();
 			tabFileMover.SuspendLayout();
 			SuspendLayout();
@@ -62,12 +62,12 @@
 			// 
 			// tabFileMover
 			// 
+			tabFileMover.Controls.Add(lstGroupedList);
 			tabFileMover.Controls.Add(btnCopy);
 			tabFileMover.Controls.Add(btnMove);
 			tabFileMover.Controls.Add(txtDestinationFolder);
 			tabFileMover.Controls.Add(lblDestination);
 			tabFileMover.Controls.Add(lblGroupFolder);
-			tabFileMover.Controls.Add(flowLayoutPanel1);
 			tabFileMover.Controls.Add(lblGroups);
 			tabFileMover.Controls.Add(btnAnalyse);
 			tabFileMover.Controls.Add(btnGroup);
@@ -127,13 +127,6 @@
 			lblGroupFolder.TabIndex = 9;
 			lblGroupFolder.Text = "Group Folder";
 			// 
-			// flowLayoutPanel1
-			// 
-			flowLayoutPanel1.Location = new Point(302, 104);
-			flowLayoutPanel1.Name = "flowLayoutPanel1";
-			flowLayoutPanel1.Size = new Size(200, 238);
-			flowLayoutPanel1.TabIndex = 8;
-			// 
 			// lblGroups
 			// 
 			lblGroups.AutoSize = true;
@@ -161,6 +154,7 @@
 			btnGroup.TabIndex = 5;
 			btnGroup.Text = "Group";
 			btnGroup.UseVisualStyleBackColor = true;
+			btnGroup.Click += btnGroup_Click;
 			// 
 			// txtGroupFolder
 			// 
@@ -213,6 +207,15 @@
 			tabDeleter.Text = "File Deleter";
 			tabDeleter.UseVisualStyleBackColor = true;
 			// 
+			// lstGroupedList
+			// 
+			lstGroupedList.FormattingEnabled = true;
+			lstGroupedList.ItemHeight = 15;
+			lstGroupedList.Location = new Point(302, 104);
+			lstGroupedList.Name = "lstGroupedList";
+			lstGroupedList.Size = new Size(200, 244);
+			lstGroupedList.TabIndex = 14;
+			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -233,7 +236,6 @@
 		private TabControl tabControl1;
 		private TabPage tabFileMover;
 		private TabPage tabDeleter;
-		private FlowLayoutPanel flowLayoutPanel1;
 		private Label lblGroups;
 		private Button btnAnalyse;
 		private Button btnGroup;
@@ -247,5 +249,6 @@
 		private Button btnMove;
 		private TextBox txtDestinationFolder;
 		private Label lblDestination;
+		private ListBox lstGroupedList;
 	}
 }

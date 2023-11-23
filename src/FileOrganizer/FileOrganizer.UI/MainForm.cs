@@ -37,7 +37,7 @@ namespace FileOrganizer.UI
 			var sourceFilePath = txtSourceFolder.Text;
 			if (!Directory.Exists(sourceFilePath))
 			{
-				MessageBox.Show("Source folder not exists");
+				ShowMessage("Source folder not exists");
 				return null;
 			}
 
@@ -46,5 +46,39 @@ namespace FileOrganizer.UI
 
 		private readonly FileAnalyzer fileAnalyzer;
 
+		private void btnGroup_Click(object sender, EventArgs e)
+		{
+			var selectedItems = chkExtentionList.CheckedItems.Cast<string>().ToList();
+			if (selectedItems.Count == 0)
+			{
+				ShowMessage("Select File Types");
+				return;
+			}
+
+			var groupedFolder = txtGroupFolder.Text;
+			if (string.IsNullOrWhiteSpace(groupedFolder))
+			{
+				ShowMessage("Enter Group folder");
+				return;
+			}
+
+			lstGroupedList.Items.Add(new GroupFileList
+			{
+				FolderName = groupedFolder,
+				Extentions = selectedItems
+			});
+
+			foreach (var item in selectedItems)
+			{
+				chkExtentionList.Items.Remove(item);
+			}
+
+			txtGroupFolder.Text = string.Empty;
+		}
+
+		void ShowMessage(string message)
+		{
+			MessageBox.Show(message);
+		}
 	}
 }
