@@ -46,6 +46,7 @@
 			lblSourceFolder = new Label();
 			txtSourceFolder = new TextBox();
 			tabDeleter = new TabPage();
+			btnExport = new Button();
 			tabControl1.SuspendLayout();
 			tabFileMover.SuspendLayout();
 			SuspendLayout();
@@ -63,6 +64,7 @@
 			// 
 			// tabFileMover
 			// 
+			tabFileMover.Controls.Add(btnExport);
 			tabFileMover.Controls.Add(lpStatusLayout);
 			tabFileMover.Controls.Add(lstGroupedList);
 			tabFileMover.Controls.Add(btnCopy);
@@ -229,6 +231,16 @@
 			tabDeleter.Text = "File Deleter";
 			tabDeleter.UseVisualStyleBackColor = true;
 			// 
+			// btnExport
+			// 
+			btnExport.Location = new Point(104, 55);
+			btnExport.Name = "btnExport";
+			btnExport.Size = new Size(75, 23);
+			btnExport.TabIndex = 16;
+			btnExport.Text = "Export";
+			btnExport.UseVisualStyleBackColor = true;
+			btnExport.Click += btnExport_Click;
+			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -264,5 +276,6 @@
 		private Label lblDestination;
 		private ListBox lstGroupedList;
 		private FlowLayoutPanel lpStatusLayout;
+		private Button btnExport;
 	}
 }

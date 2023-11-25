@@ -31,7 +31,8 @@ namespace FileOrganizer.UI
 			}
 		}
 
-		FileAnalyzer Analyzer => fileAnalyzer ?? GetAnalyzer();
+		FileAnalyzer Analyzer => fileAnalyzer ??= GetAnalyzer();
+		private FileAnalyzer fileAnalyzer;
 
 		private FileAnalyzer GetAnalyzer()
 		{
@@ -44,8 +45,6 @@ namespace FileOrganizer.UI
 
 			return new FileAnalyzer(sourceFilePath);
 		}
-
-		private readonly FileAnalyzer fileAnalyzer;
 
 		private void btnGroup_Click(object sender, EventArgs e)
 		{
@@ -231,5 +230,40 @@ namespace FileOrganizer.UI
 			}
 		}
 
+		private void btnExport_Click(object sender, EventArgs e)
+		{
+			if (Analyzer is null)
+			{
+				return;
+			}
+
+			var fileInfos = Analyzer.GetFileDetails();
+
+			if (fileInfos == null || fileInfos.Length == 0)
+			{
+				ShowMessage("No files to export");
+				return;
+			}
+
+
+			var dialog = new SaveFileDialog();
+			dialog.Filter = "CSV File|*.csv";
+			dialog.Title = "Export Data";
+			dialog.ShowDialog();
+
+			var fileName = dialog.FileName;
+			if (!string.IsNullOrWhiteSpace(fileName))
+			{
+				var extention = Path.GetExtension(fileName);
+				if (string.IsNullOrWhiteSpace(extention))
+				{
+					fileName += ".csv";
+				}
+
+				var exporter = new DetailsExporter();
+				exporter.ExportData(fileInfos, fileName);
+			}
+
+		}
 	}
 }
