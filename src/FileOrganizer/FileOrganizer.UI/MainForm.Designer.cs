@@ -30,6 +30,7 @@
 		{
 			tabControl1 = new TabControl();
 			tabFileMover = new TabPage();
+			lpStatusLayout = new FlowLayoutPanel();
 			lstGroupedList = new ListBox();
 			btnCopy = new Button();
 			btnMove = new Button();
@@ -57,11 +58,12 @@
 			tabControl1.Location = new Point(0, 0);
 			tabControl1.Name = "tabControl1";
 			tabControl1.SelectedIndex = 0;
-			tabControl1.Size = new Size(548, 439);
+			tabControl1.Size = new Size(548, 645);
 			tabControl1.TabIndex = 0;
 			// 
 			// tabFileMover
 			// 
+			tabFileMover.Controls.Add(lpStatusLayout);
 			tabFileMover.Controls.Add(lstGroupedList);
 			tabFileMover.Controls.Add(btnCopy);
 			tabFileMover.Controls.Add(btnMove);
@@ -79,10 +81,19 @@
 			tabFileMover.Location = new Point(4, 24);
 			tabFileMover.Name = "tabFileMover";
 			tabFileMover.Padding = new Padding(3);
-			tabFileMover.Size = new Size(540, 411);
+			tabFileMover.Size = new Size(540, 617);
 			tabFileMover.TabIndex = 0;
 			tabFileMover.Text = "File Mover";
 			tabFileMover.UseVisualStyleBackColor = true;
+			// 
+			// lpStatusLayout
+			// 
+			lpStatusLayout.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			lpStatusLayout.AutoSize = true;
+			lpStatusLayout.Location = new Point(27, 404);
+			lpStatusLayout.Name = "lpStatusLayout";
+			lpStatusLayout.Size = new Size(475, 205);
+			lpStatusLayout.TabIndex = 15;
 			// 
 			// lstGroupedList
 			// 
@@ -213,7 +224,7 @@
 			tabDeleter.Location = new Point(4, 24);
 			tabDeleter.Name = "tabDeleter";
 			tabDeleter.Padding = new Padding(3);
-			tabDeleter.Size = new Size(540, 411);
+			tabDeleter.Size = new Size(540, 617);
 			tabDeleter.TabIndex = 1;
 			tabDeleter.Text = "File Deleter";
 			tabDeleter.UseVisualStyleBackColor = true;
@@ -222,7 +233,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(548, 439);
+			ClientSize = new Size(548, 645);
 			Controls.Add(tabControl1);
 			MinimumSize = new Size(564, 478);
 			Name = "MainForm";
@@ -252,5 +263,6 @@
 		private TextBox txtDestinationFolder;
 		private Label lblDestination;
 		private ListBox lstGroupedList;
+		private FlowLayoutPanel lpStatusLayout;
 	}
 }

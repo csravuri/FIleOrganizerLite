@@ -149,8 +149,14 @@ namespace FileOrganizer.UI
 		private void TransferFiles(bool move, GroupFileList item, FileInfo[] fileInfos, string destinationFolder)
 		{
 			var filesToBeTransfered = fileInfos.Where(x => item.Extentions.Contains(x.Extension.ToLower())).ToArray();
+			var progressBar = new LabelStausBar();
+			progressBar.Title = item.FolderName;
+			progressBar.MaxCount = filesToBeTransfered.Length;
+
+			lpStatusLayout.Controls.Add(progressBar);
 			foreach (var file in filesToBeTransfered)
 			{
+				progressBar.PerformStep();
 				var destSubFolder = Path.Combine(destinationFolder, item.FolderName);
 				Directory.CreateDirectory(destSubFolder);
 				var finalPath = Path.Combine(destSubFolder, file.Name);
