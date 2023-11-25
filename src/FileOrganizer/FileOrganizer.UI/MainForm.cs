@@ -24,7 +24,7 @@ namespace FileOrganizer.UI
 		{
 			chkExtentionList.Items.Clear();
 
-			foreach (var extention in files.Select(x => x.Extension.ToLower()).Distinct())
+			foreach (var extention in files.Select(x => x.Extension.ToLower()).Distinct().OrderBy(x => x))
 			{
 				chkExtentionList.Items.Add(extention);
 			}
@@ -62,11 +62,22 @@ namespace FileOrganizer.UI
 				return;
 			}
 
-			lstGroupedList.Items.Add(new GroupFileList
+			var alreadyPresentFolder = lstGroupedList.Items.Cast<GroupFileList>().FirstOrDefault(x => x.FolderName == groupedFolder);
+			if (alreadyPresentFolder is not null)
 			{
-				FolderName = groupedFolder,
-				Extentions = selectedItems
-			});
+				alreadyPresentFolder.Extentions.AddRange(selectedItems);
+				var indx = lstGroupedList.Items.IndexOf(alreadyPresentFolder);
+				lstGroupedList.Items.RemoveAt(indx);
+				lstGroupedList.Items.Insert(indx, alreadyPresentFolder);
+			}
+			else
+			{
+				lstGroupedList.Items.Add(new GroupFileList
+				{
+					FolderName = groupedFolder,
+					Extentions = selectedItems
+				});
+			}
 
 			foreach (var item in selectedItems)
 			{
