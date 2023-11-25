@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Security.Cryptography;
 
 namespace FileOrganizer.UI
@@ -151,12 +152,26 @@ namespace FileOrganizer.UI
 			var filesToBeTransfered = fileInfos.Where(x => item.Extentions.Contains(x.Extension.ToLower())).ToArray();
 			var progressBar = new LabelStausBar();
 			progressBar.Title = item.FolderName;
-			progressBar.MaxCount = filesToBeTransfered.Length;
 
 			lpStatusLayout.Controls.Add(progressBar);
+
+			using var worker = new BackgroundWorker();
+			worker.WorkerReportsProgress = true;
+			worker.DoWork += (s, e) =>
+			{
+				PerformTransfer(move, item, destinationFolder, filesToBeTransfered, worker);
+			};
+			worker.ProgressChanged += (s, e) => progressBar.Value = e.ProgressPercentage;
+			worker.RunWorkerAsync();
+		}
+
+		private void PerformTransfer(bool move, GroupFileList item, string destinationFolder, FileInfo[] filesToBeTransfered, BackgroundWorker bgWorker)
+		{
+			var count = 0;
 			foreach (var file in filesToBeTransfered)
 			{
-				progressBar.PerformStep();
+				count++;
+				bgWorker.ReportProgress(count * 100 / filesToBeTransfered.Length);
 				var destSubFolder = Path.Combine(destinationFolder, item.FolderName);
 				Directory.CreateDirectory(destSubFolder);
 				var finalPath = Path.Combine(destSubFolder, file.Name);
@@ -192,6 +207,7 @@ namespace FileOrganizer.UI
 					file.CopyTo(finalPath, false);
 				}
 			}
+			bgWorker.ReportProgress(100);
 		}
 
 		string GetNewFilePath(FileInfo fileInfo)

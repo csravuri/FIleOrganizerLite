@@ -6,6 +6,7 @@ namespace FileOrganizer.UI
 		public LabelStausBar()
 		{
 			InitializeComponent();
+			progressBar1.Maximum = 100;
 		}
 
 		public string Title
@@ -15,18 +16,12 @@ namespace FileOrganizer.UI
 				label1.Text = value;
 			}
 		}
-		public int MaxCount
+		public int Value
 		{
 			set
 			{
-				progressBar1.Step = 1;
-				progressBar1.Maximum = value;
+				progressBar1.Value = value;
 			}
-		}
-
-		internal void PerformStep()
-		{
-			progressBar1.PerformStep();
 		}
 	}
 }
