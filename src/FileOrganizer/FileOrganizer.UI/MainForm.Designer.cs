@@ -84,7 +84,7 @@
 			tabFileMover.Controls.Add(txtSourceFolder);
 			tabFileMover.Location = new Point(4, 24);
 			tabFileMover.Name = "tabFileMover";
-			tabFileMover.Padding = new Padding(3, 3, 3, 3);
+			tabFileMover.Padding = new Padding(3);
 			tabFileMover.Size = new Size(540, 617);
 			tabFileMover.TabIndex = 0;
 			tabFileMover.Text = "File Mover";
@@ -92,7 +92,7 @@
 			// 
 			// btnAddToGroup
 			// 
-			btnAddToGroup.Location = new Point(150, 200);
+			btnAddToGroup.Location = new Point(176, 200);
 			btnAddToGroup.Name = "btnAddToGroup";
 			btnAddToGroup.Size = new Size(97, 23);
 			btnAddToGroup.TabIndex = 17;
@@ -123,9 +123,9 @@
 			// 
 			lstGroupedList.FormattingEnabled = true;
 			lstGroupedList.ItemHeight = 15;
-			lstGroupedList.Location = new Point(302, 104);
+			lstGroupedList.Location = new Point(281, 104);
 			lstGroupedList.Name = "lstGroupedList";
-			lstGroupedList.Size = new Size(200, 244);
+			lstGroupedList.Size = new Size(221, 244);
 			lstGroupedList.TabIndex = 14;
 			// 
 			// btnCopy
@@ -167,7 +167,7 @@
 			// lblGroupFolder
 			// 
 			lblGroupFolder.AutoSize = true;
-			lblGroupFolder.Location = new Point(149, 86);
+			lblGroupFolder.Location = new Point(175, 86);
 			lblGroupFolder.Name = "lblGroupFolder";
 			lblGroupFolder.Size = new Size(75, 15);
 			lblGroupFolder.TabIndex = 9;
@@ -194,7 +194,7 @@
 			// 
 			// btnNewGroup
 			// 
-			btnNewGroup.Location = new Point(150, 133);
+			btnNewGroup.Location = new Point(176, 133);
 			btnNewGroup.Name = "btnNewGroup";
 			btnNewGroup.Size = new Size(97, 23);
 			btnNewGroup.TabIndex = 5;
@@ -204,7 +204,7 @@
 			// 
 			// txtGroupFolder
 			// 
-			txtGroupFolder.Location = new Point(149, 104);
+			txtGroupFolder.Location = new Point(175, 104);
 			txtGroupFolder.Name = "txtGroupFolder";
 			txtGroupFolder.Size = new Size(100, 23);
 			txtGroupFolder.TabIndex = 4;
@@ -215,7 +215,7 @@
 			chkExtentionList.FormattingEnabled = true;
 			chkExtentionList.Location = new Point(23, 104);
 			chkExtentionList.Name = "chkExtentionList";
-			chkExtentionList.Size = new Size(120, 220);
+			chkExtentionList.Size = new Size(146, 238);
 			chkExtentionList.TabIndex = 3;
 			// 
 			// lblFileTypes
@@ -247,7 +247,7 @@
 			// 
 			tabDeleter.Location = new Point(4, 24);
 			tabDeleter.Name = "tabDeleter";
-			tabDeleter.Padding = new Padding(3, 3, 3, 3);
+			tabDeleter.Padding = new Padding(3);
 			tabDeleter.Size = new Size(540, 617);
 			tabDeleter.TabIndex = 1;
 			tabDeleter.Text = "File Deleter";
