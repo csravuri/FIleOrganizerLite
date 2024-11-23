@@ -30,6 +30,8 @@
 		{
 			tabControl1 = new TabControl();
 			tabFileMover = new TabPage();
+			btnAddToGroup = new Button();
+			btnExport = new Button();
 			lpStatusLayout = new FlowLayoutPanel();
 			lstGroupedList = new ListBox();
 			btnCopy = new Button();
@@ -39,14 +41,13 @@
 			lblGroupFolder = new Label();
 			lblGroups = new Label();
 			btnAnalyse = new Button();
-			btnGroup = new Button();
+			btnNewGroup = new Button();
 			txtGroupFolder = new TextBox();
 			chkExtentionList = new CheckedListBox();
 			lblFileTypes = new Label();
 			lblSourceFolder = new Label();
 			txtSourceFolder = new TextBox();
 			tabDeleter = new TabPage();
-			btnExport = new Button();
 			tabControl1.SuspendLayout();
 			tabFileMover.SuspendLayout();
 			SuspendLayout();
@@ -64,6 +65,7 @@
 			// 
 			// tabFileMover
 			// 
+			tabFileMover.Controls.Add(btnAddToGroup);
 			tabFileMover.Controls.Add(btnExport);
 			tabFileMover.Controls.Add(lpStatusLayout);
 			tabFileMover.Controls.Add(lstGroupedList);
@@ -74,7 +76,7 @@
 			tabFileMover.Controls.Add(lblGroupFolder);
 			tabFileMover.Controls.Add(lblGroups);
 			tabFileMover.Controls.Add(btnAnalyse);
-			tabFileMover.Controls.Add(btnGroup);
+			tabFileMover.Controls.Add(btnNewGroup);
 			tabFileMover.Controls.Add(txtGroupFolder);
 			tabFileMover.Controls.Add(chkExtentionList);
 			tabFileMover.Controls.Add(lblFileTypes);
@@ -82,11 +84,31 @@
 			tabFileMover.Controls.Add(txtSourceFolder);
 			tabFileMover.Location = new Point(4, 24);
 			tabFileMover.Name = "tabFileMover";
-			tabFileMover.Padding = new Padding(3);
+			tabFileMover.Padding = new Padding(3, 3, 3, 3);
 			tabFileMover.Size = new Size(540, 617);
 			tabFileMover.TabIndex = 0;
 			tabFileMover.Text = "File Mover";
 			tabFileMover.UseVisualStyleBackColor = true;
+			// 
+			// btnAddToGroup
+			// 
+			btnAddToGroup.Location = new Point(150, 200);
+			btnAddToGroup.Name = "btnAddToGroup";
+			btnAddToGroup.Size = new Size(97, 23);
+			btnAddToGroup.TabIndex = 17;
+			btnAddToGroup.Text = "Add to Group";
+			btnAddToGroup.UseVisualStyleBackColor = true;
+			btnAddToGroup.Click += button1_Click;
+			// 
+			// btnExport
+			// 
+			btnExport.Location = new Point(104, 55);
+			btnExport.Name = "btnExport";
+			btnExport.Size = new Size(75, 23);
+			btnExport.TabIndex = 16;
+			btnExport.Text = "Export";
+			btnExport.UseVisualStyleBackColor = true;
+			btnExport.Click += btnExport_Click;
 			// 
 			// lpStatusLayout
 			// 
@@ -147,9 +169,9 @@
 			lblGroupFolder.AutoSize = true;
 			lblGroupFolder.Location = new Point(149, 86);
 			lblGroupFolder.Name = "lblGroupFolder";
-			lblGroupFolder.Size = new Size(76, 15);
+			lblGroupFolder.Size = new Size(75, 15);
 			lblGroupFolder.TabIndex = 9;
-			lblGroupFolder.Text = "Group Folder";
+			lblGroupFolder.Text = "Group Name";
 			// 
 			// lblGroups
 			// 
@@ -170,15 +192,15 @@
 			btnAnalyse.UseVisualStyleBackColor = true;
 			btnAnalyse.Click += btnAnalyse_Click;
 			// 
-			// btnGroup
+			// btnNewGroup
 			// 
-			btnGroup.Location = new Point(150, 133);
-			btnGroup.Name = "btnGroup";
-			btnGroup.Size = new Size(75, 23);
-			btnGroup.TabIndex = 5;
-			btnGroup.Text = "Group";
-			btnGroup.UseVisualStyleBackColor = true;
-			btnGroup.Click += btnGroup_Click;
+			btnNewGroup.Location = new Point(150, 133);
+			btnNewGroup.Name = "btnNewGroup";
+			btnNewGroup.Size = new Size(97, 23);
+			btnNewGroup.TabIndex = 5;
+			btnNewGroup.Text = "New Group";
+			btnNewGroup.UseVisualStyleBackColor = true;
+			btnNewGroup.Click += btnNewGroup_Click;
 			// 
 			// txtGroupFolder
 			// 
@@ -193,7 +215,7 @@
 			chkExtentionList.FormattingEnabled = true;
 			chkExtentionList.Location = new Point(23, 104);
 			chkExtentionList.Name = "chkExtentionList";
-			chkExtentionList.Size = new Size(120, 238);
+			chkExtentionList.Size = new Size(120, 220);
 			chkExtentionList.TabIndex = 3;
 			// 
 			// lblFileTypes
@@ -225,21 +247,11 @@
 			// 
 			tabDeleter.Location = new Point(4, 24);
 			tabDeleter.Name = "tabDeleter";
-			tabDeleter.Padding = new Padding(3);
+			tabDeleter.Padding = new Padding(3, 3, 3, 3);
 			tabDeleter.Size = new Size(540, 617);
 			tabDeleter.TabIndex = 1;
 			tabDeleter.Text = "File Deleter";
 			tabDeleter.UseVisualStyleBackColor = true;
-			// 
-			// btnExport
-			// 
-			btnExport.Location = new Point(104, 55);
-			btnExport.Name = "btnExport";
-			btnExport.Size = new Size(75, 23);
-			btnExport.TabIndex = 16;
-			btnExport.Text = "Export";
-			btnExport.UseVisualStyleBackColor = true;
-			btnExport.Click += btnExport_Click;
 			// 
 			// MainForm
 			// 
@@ -247,7 +259,7 @@
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(548, 645);
 			Controls.Add(tabControl1);
-			MinimumSize = new Size(564, 478);
+			MinimumSize = new Size(559, 461);
 			Name = "MainForm";
 			Text = "File Organizer";
 			tabControl1.ResumeLayout(false);
@@ -263,7 +275,7 @@
 		private TabPage tabDeleter;
 		private Label lblGroups;
 		private Button btnAnalyse;
-		private Button btnGroup;
+		private Button btnNewGroup;
 		private TextBox txtGroupFolder;
 		private CheckedListBox chkExtentionList;
 		private Label lblFileTypes;
@@ -277,5 +289,6 @@
 		private ListBox lstGroupedList;
 		private FlowLayoutPanel lpStatusLayout;
 		private Button btnExport;
+		private Button btnAddToGroup;
 	}
 }

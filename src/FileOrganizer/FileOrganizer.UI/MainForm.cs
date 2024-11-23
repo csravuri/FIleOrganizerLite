@@ -46,7 +46,7 @@ namespace FileOrganizer.UI
 			return new FileAnalyzer(sourceFilePath);
 		}
 
-		private void btnGroup_Click(object sender, EventArgs e)
+		private void btnNewGroup_Click(object sender, EventArgs e)
 		{
 			var selectedItems = chkExtentionList.CheckedItems.Cast<string>().ToList();
 			if (selectedItems.Count == 0)
@@ -85,6 +85,33 @@ namespace FileOrganizer.UI
 			}
 
 			txtGroupFolder.Text = string.Empty;
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			if (lstGroupedList.SelectedItem is GroupFileList selectedGroup)
+			{
+				var selectedItems = chkExtentionList.CheckedItems.Cast<string>().ToList();
+				if (selectedItems.Count == 0)
+				{
+					ShowMessage("Select File Types");
+					return;
+				}
+
+				selectedGroup.Extentions.AddRange(selectedItems);
+				var indx = lstGroupedList.SelectedIndex;
+				lstGroupedList.Items.RemoveAt(indx);
+				lstGroupedList.Items.Insert(indx, selectedGroup);
+
+				foreach (var item in selectedItems)
+				{
+					chkExtentionList.Items.Remove(item);
+				}
+			}
+			else
+			{
+				ShowMessage("Select a Group");
+			}
 		}
 
 		void ShowMessage(string message)
